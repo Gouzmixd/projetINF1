@@ -18,7 +18,7 @@ public class projet {
 	
 	public static void jouer(int j,int c) {
 		int l=0;
-		while(grille[l][c]!=0) {
+		while(grille[l][c]!=0 || l<=6 || c<=7) {
 			l++;
 		}
 		grille[l][c]=j;
