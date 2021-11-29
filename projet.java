@@ -39,6 +39,56 @@ public class projet {
 			System.out.print(" "+l);
 		}
 	}
+	
+	
+	
+	public static boolean aGagne(int j) {
+		for(int x=0; x<grille.length;x++) {
+			for(int y=0; y<grille[x].length;y++) {
+				if(aGagneHor(j,x,y)==true) return true;
+				if(aGagneVer(j,x,y)==true) return true;
+				if(aGagneDiagMont(j,x,y)==true) return true;
+				if(aGagneDiagDesc(j,x,y)==true) return true;
+			}
+		}
+		return false;
+	}
+
+	public static boolean matchNul() {
+		if(aGagne(1)==true||aGagne(2)==true) return false;
+		for(int x=0; x<grille.length;x++) {
+			for(int y=0; y<grille[x].length;y++) {
+				if(grille[x][y]==0) return false;
+			}
+		}
+		return true;
+	}
+	
+	public static void jeu() {
+		initialiseGrille();
+		Scanner sc=new Scanner(System.in);
+		int j=1;
+		boolean fini=false;
+		while(!fini) {
+			afficheGrille();
+			System.out.println("Quel coup pour le joueur "+j+"?");
+			int c = sc.nextInt();
+			jouer(j,c);
+			
+			if(aGagne(j)==true) {
+				fini=true;
+				System.out.println("Le joueur "+j+" a gagné");
+			}
+			if(matchNul()==true) {
+				fini=true;
+				System.out.println("Match nul");
+			}
+
+			if(j==1) j=2;
+			else j=1;
+		}
+		sc.close();
+	}
 
 	public static void main(String[] args) {
 		initialiseGrille();
