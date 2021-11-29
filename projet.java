@@ -40,7 +40,13 @@ public class projet {
 		}
 	}
 	
-	
+	public static boolean aGagneHor(int j, int x,int y) {
+		if(y+4>=grille.length) return false;
+		for(int i=0;i<4;i++){
+			if(grille[x][y+i]!=j) return false;
+		}
+		return true;
+	}	
 	
 	public static boolean aGagne(int j) {
 		for(int x=0; x<grille.length;x++) {
